@@ -1,0 +1,29 @@
+@using PowerAutomate.Core
+@model Clientes
+<partial name="~/Views/Clientes/Formulario.cshtml"></partial>
+
+<br>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Dni</td>
+            <td>Correo</td>
+            <td colspan="2"></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Clientes cliente in ViewBag.Clientes )
+        {
+            <tr>
+                <td>@cliente.IdCliente</td>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Dni</td>
+                <td>@cliente.Correo</td>
+                <td><a asp-action="Modificar" asp-controller="Clientes" asp-route-id="@cliente.IdCliente">Editar</a></td>
+                <td><a asp-action="Eliminar"  onclick= "return confirm('¿DeseaEliminar este Registo?')" asp-controller="Clientes" asp-route-id="@cliente.IdCliente">Eliminar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+@* @using PowerAutomate.Core
+@model Compras
+  <form asp-action="SetEncabezado" asp-controller="Compras" method="post" id=SetEncabezado>
+        <input type="hidden" asp-for="IdCompra">
+        
+        <div class="row">
+            <div class="col-md-4">
+                <label>Nº Factura</label>
+                <input type="text" class="form-control" asp-for="NumeroFactura">
+                <span asp-validation-for="NumeroFactura"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Proveedor</label>
+                <select class="form-control" asp-for="IdProveedor" asp-items="@(new SelectList(ViewBag.Proveedores, "IdProveedor", "Nombre"))">
+                    <option>Seleccione</option>
+                </select>
+                <span asp-validation-for="IdProveedor"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Fecha</label>
+                <input type="text" class="form-control" asp-for="Fecha" readonly value="@DateTime.Now.ToString("dd/MM/yyyy")" >
+                <span asp-validation-for="Fecha"></span>
+            </div>
+        </div>
+    </form> *@

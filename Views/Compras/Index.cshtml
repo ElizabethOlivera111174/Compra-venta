@@ -1,0 +1,34 @@
+@using PowerAutomate.Core
+@model Compras
+@using System.Globalization
+
+<div class="container">
+    <table class= "table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nº Facruta</th>
+                    <th>Proveedor</th>
+                    <th>Fecha de la compra</th>
+                    <th>Total Compra</th>
+                    <th>Total Iva</th>
+                    <th>Ver Detalle</th>
+                </tr>
+            </thead>
+        <tbody>
+            @foreach (Compras compra in ViewBag.compra)
+            { 
+                <tr>
+                    <td>@compra.NumeroFactura</td>
+                    <td>@compra.Proveedor.Nombre</td>
+                    <td>@compra.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>$@Math.Round(@compra.DetalleCompra.Select(x=>(x.Cantidad * x.Precio)).DefaultIfEmpty(0).Sum(),2)</td>
+                    <td>$@Math.Round(@compra.DetalleCompra.Select(x=>x.Iva).DefaultIfEmpty(0).Sum(),2)</td>
+                    <td><a asp-action="Detalle" asp-controller="Compras" asp-route-id="@compra.IdCompra">Ver</a></td>
+                </tr>           
+            }
+        </tbody>
+    </table>
+
+    <a class= "btn btn-primary" asp-action="Nuevo" asp-controller="Compras" > Nueva Compra</a>
+
+</div>
