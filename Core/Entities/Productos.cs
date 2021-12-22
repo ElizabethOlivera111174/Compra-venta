@@ -11,7 +11,6 @@ namespace PowerAutomate.Core
     {
         public Productos()
         {
-            DetalleCompra = new HashSet<DetalleCompra>();
             DetalleVenta = new HashSet<DetalleVenta>();
         }
         [Key]
@@ -34,9 +33,6 @@ namespace PowerAutomate.Core
         [ForeignKey("IdCategoria")]
         [InverseProperty("Productos")]
         public virtual Categorias Categoria { get; set; }
-
-        [InverseProperty("Producto")]
-        public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }
 
         [InverseProperty("Producto")]
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
