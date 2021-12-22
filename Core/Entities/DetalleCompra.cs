@@ -25,7 +25,6 @@ namespace PowerAutomate.Core
         public virtual Compras Compra { get; set; }
 
         [ForeignKey("IdProducto")]
-        [InverseProperty("DetalleCompra")]
         public virtual Productos Producto { get; set; }
     }
 }

@@ -1,50 +1,12 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-// Write your JavaScript code.
-// $(document).on('submit', '#SetDetalle', function(e){
-//     e.preventDefault();
-//    if(!$('#SetEncabezado').valid())
-//    {
-        
-//        return false;
-//    }
-//    var IdCompra=0; 
-//    console.log("Funciona");
-//    $.ajax({
-//        type:'POST',
-//        url: '/Compras/SetEncabezado',
-//        data:$('#SetEncabezado').serialize(),
-//        success: function(data)
-//        {
-//         console.log(data);
-//            if(data.estado){
-//                 IdCompra= data.resultado;
-//                 console.log(data.resultado);
-//                 $.ajax({
-//                     type: 'POST',
-//                     url: "/Compras/SetDetalle/",
-//                     data: $(this).serialize() + '&IdCompra=' + IdCompra,
-//                     success: function(data)
-//                     {
-//                         console.log(data);
-//                     }
-//                 })
-//             }
-//             else
-//             {
-//                 alert(data.mensaje);
-//             }
-//        }
-//    })
-// });
 $(document).on('submit', '#SetDetalle', function(e){
     e.preventDefault();
     if(!$('#SetEncabezado').valid())
     {
         return false;
     }
-    var IdCompra = 0;
     $.ajax({
         type: 'POST',
         url: '/Compras/SetEncabezado/',
@@ -52,8 +14,9 @@ $(document).on('submit', '#SetDetalle', function(e){
         success: function(data)
         {
             if(data.estado){
-                $('#SetDetalle #Item2_IdCompra').val(data.resultado);
+                console.log("funciona");
                 $('#SetEncabezado #Item1_IdCompra').val(data.resultado);
+                $('#SetDetalle #Item2_IdCompra').val(data.resultado);
                 $.ajax({
                     type: 'POST',
                     url: '/Compras/SetDetalle/',
@@ -65,9 +28,9 @@ $(document).on('submit', '#SetDetalle', function(e){
                         tbl.append('<tr><td>'+detalle.producto.marca + ' - ' + detalle.producto.modelo+'</td>'+
                                         '<td>'+detalle.producto.descripcion+'</td>'+
                                         '<td>'+detalle.cantidad+'</td>'+
-                                        '<td>$'+detalle.precio.toFixed(2)+'</td>'+
-                                        '<td>$'+detalle.iva.toFixed(2)+'</td>'+
-                                        '<td>$'+detalle.total.toFixed(2)+'</td>'+
+                                        '<td>$'+detalle.precio+'</td>'+
+                                        '<td>$'+detalle.iva+'</td>'+
+                                        '<td>$'+detalle.total+'</td>'+
                                         '</tr>');
                     }
                 });

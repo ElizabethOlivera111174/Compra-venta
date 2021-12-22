@@ -1,5 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
-using System.Reflection.PortableExecutable;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

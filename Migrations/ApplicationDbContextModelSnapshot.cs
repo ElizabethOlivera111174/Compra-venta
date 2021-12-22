@@ -155,14 +155,14 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             IdCompra = 1,
-                            Fecha = new DateTime(2021, 12, 20, 16, 33, 15, 999, DateTimeKind.Local).AddTicks(5880),
+                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 899, DateTimeKind.Local).AddTicks(8595),
                             IdProveedor = 1,
                             NumeroFactura = "0001"
                         },
                         new
                         {
                             IdCompra = 2,
-                            Fecha = new DateTime(2021, 12, 20, 16, 33, 16, 1, DateTimeKind.Local).AddTicks(2078),
+                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 903, DateTimeKind.Local).AddTicks(7335),
                             IdProveedor = 2,
                             NumeroFactura = "0002"
                         });
@@ -471,14 +471,14 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             IdVenta = 1,
-                            Fecha = new DateTime(2021, 12, 20, 16, 33, 16, 1, DateTimeKind.Local).AddTicks(5382),
+                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 905, DateTimeKind.Local).AddTicks(1479),
                             IdCliente = 1,
                             NumeroFactura = "001"
                         },
                         new
                         {
                             IdVenta = 2,
-                            Fecha = new DateTime(2021, 12, 20, 16, 33, 16, 1, DateTimeKind.Local).AddTicks(5620),
+                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 905, DateTimeKind.Local).AddTicks(2669),
                             IdCliente = 2,
                             NumeroFactura = "002"
                         });
@@ -504,7 +504,7 @@ namespace PowerAutomate.Migrations
                         .IsRequired();
 
                     b.HasOne("PowerAutomate.Core.Productos", "Producto")
-                        .WithMany("DetalleCompra")
+                        .WithMany()
                         .HasForeignKey("IdProducto")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -583,8 +583,6 @@ namespace PowerAutomate.Migrations
 
             modelBuilder.Entity("PowerAutomate.Core.Productos", b =>
                 {
-                    b.Navigation("DetalleCompra");
-
                     b.Navigation("DetalleVenta");
                 });
 
