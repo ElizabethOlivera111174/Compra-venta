@@ -17,9 +17,12 @@ public class UsuarioController: Controller
         _context = context;
     }
 
-    
+      public async Task<IActionResult> Index()
+    {
+        return View();
+    }
 
-   
+     
 
         public IActionResult Error()
     {

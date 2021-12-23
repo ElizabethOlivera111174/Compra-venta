@@ -42,3 +42,46 @@ $(document).on('submit', '#SetDetalle', function(e){
         }
     });
 })
+
+$(document).on('submit', '#Registrar', function (e) {
+    e.preventDefault();
+    $.ajax({
+        beforeSend: function () {
+            $('#Registrar button[type=submit]').prop('disabled', true);
+        },
+        type: 'POST',
+        url: "/Home/Registrar/",
+        data: $("#Registrar").serialize(),
+        success: function (data) {
+            alert('Usuario registrado con éxito.');
+        },
+        error: function (xhr, status) {
+            console.log(xhr.responseJSON);
+            alert(xhr.responseJSON.Message);
+            alert("El Usuario ya existe");
+        },
+        complete: function () {
+            $('#Registrar button[type=submit]').prop('disabled', false);
+        }
+    });
+});
+$(document).on('submit', '#Login', function (e) {
+    e.preventDefault();
+    $.ajax({
+        beforeSend: function () {
+            $('#Login button[type=submit]').prop('disabled', true);
+        },
+        type: this.method,
+        url: this.action,
+        data: $(this).serialize(),
+        success: function (data) {
+            alert('Bienvenido ' + data.email);
+        },
+        error: function (xhr, status) {
+            alert(xhr.responseJSON.Message);
+        },
+        complete: function () {
+            $('#Login button[type=submit]').prop('disabled', false);
+        }
+    });
+});
