@@ -32,9 +32,9 @@ namespace PowerAutomate.Core.Entities
         [MaxLength(64)]
         public string Password { get; set; }
 
-        // [ForeignKey("Role")]
-        // public int RoleId { get; set; }
-        // public virtual Role Role { get; set; }
+        [ForeignKey("Role")]
+        public int RoleId { get; set; }
+        public virtual Role Role { get; set; }
         
     }
 }

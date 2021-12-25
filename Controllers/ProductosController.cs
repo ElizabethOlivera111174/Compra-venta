@@ -1,11 +1,12 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PowerAutomate.Core;
 using PowerAutomate.Core.Entities;
 
 namespace PowerAutomate.Controllers;
-
+[Authorize]
 public class ProductosController : Controller
 {
 

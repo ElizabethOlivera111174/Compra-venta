@@ -53,11 +53,11 @@ $(document).on('submit', '#Registrar', function (e) {
         url: "/Home/Registrar/",
         data: $("#Registrar").serialize(),
         success: function (data) {
-            alert('Usuario registrado con éxito.');
+            // alert('Bienvenido ' + data.firstname);
+            window.location='/Home/';
         },
         error: function (xhr, status) {
-            console.log(xhr.responseJSON);
-            alert(xhr.responseJSON.Message);
+            // alert(xhr.responseJSON.Message);
             alert("El Usuario ya existe");
         },
         complete: function () {
@@ -75,10 +75,14 @@ $(document).on('submit', '#Login', function (e) {
         url: this.action,
         data: $(this).serialize(),
         success: function (data) {
+            
             alert('Bienvenido ' + data.email);
+            window.location='/Home/';
         },
         error: function (xhr, status) {
             alert(xhr.responseJSON.Message);
+            alert("Usuario o Contraseña Incorrecta");
+            
         },
         complete: function () {
             $('#Login button[type=submit]').prop('disabled', false);
