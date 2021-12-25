@@ -37,7 +37,7 @@ namespace PowerAutomate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role");
 
                     b.HasData(
                         new
@@ -155,14 +155,14 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             IdCompra = 1,
-                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 899, DateTimeKind.Local).AddTicks(8595),
+                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 741, DateTimeKind.Local).AddTicks(7306),
                             IdProveedor = 1,
                             NumeroFactura = "0001"
                         },
                         new
                         {
                             IdCompra = 2,
-                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 903, DateTimeKind.Local).AddTicks(7335),
+                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 745, DateTimeKind.Local).AddTicks(8523),
                             IdProveedor = 2,
                             NumeroFactura = "0002"
                         });
@@ -319,13 +319,13 @@ namespace PowerAutomate.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Email = "Email for user 1 ",
+                            Email = "user1@gmail.com",
                             FirstName = "User",
                             LastName = "LastName for user ",
                             Password = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
@@ -334,7 +334,7 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             Id = 2,
-                            Email = "Email for user 2",
+                            Email = "user2@gmail.com",
                             FirstName = "User 2",
                             LastName = "LastName for user ",
                             Password = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
@@ -471,14 +471,14 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             IdVenta = 1,
-                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 905, DateTimeKind.Local).AddTicks(1479),
+                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 747, DateTimeKind.Local).AddTicks(6476),
                             IdCliente = 1,
                             NumeroFactura = "001"
                         },
                         new
                         {
                             IdVenta = 2,
-                            Fecha = new DateTime(2021, 12, 22, 2, 54, 18, 905, DateTimeKind.Local).AddTicks(2669),
+                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 747, DateTimeKind.Local).AddTicks(8022),
                             IdCliente = 2,
                             NumeroFactura = "002"
                         });
