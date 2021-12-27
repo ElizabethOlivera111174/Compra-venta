@@ -33,8 +33,8 @@ public class ApplicationDbContext : DbContext
 
         }
         
-              public DbSet<User> Users { get; set; }
-              public DbSet<Role> Roles { get; set; } 
+              public DbSet<User> User { get; set; }
+              public DbSet<Role> Role { get; set; } 
               public DbSet<Categorias> Categorias { get; set; }
               public DbSet<Clientes> Clientes { get; set; }
               public DbSet<DetalleCompra> DetalleCompra { get; set; }
@@ -53,7 +53,7 @@ public class ApplicationDbContext : DbContext
                     Id = 1,
                     FirstName = "User",
                     LastName = "LastName for user ",
-                    Email = "Email for user 1 ",
+                    Email = "user1@gmail.com",
                     Password = Encrypt.GetSHA256("123456"),
                     RoleId = 1,
                 }
@@ -66,7 +66,7 @@ public class ApplicationDbContext : DbContext
                     Id = 2,
                     FirstName = "User 2",
                     LastName = "LastName for user ",
-                    Email = "Email for user 2",
+                    Email = "user2@gmail.com",
                     Password = Encrypt.GetSHA256("123456"),
                     RoleId = 2,
                        

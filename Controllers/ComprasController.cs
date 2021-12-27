@@ -12,9 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PowerAutomate.Core;
 using PowerAutomate.Core.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PowerAutomate.Controllers;
-
+[Authorize]
 public class ComprasController: Controller
 {
     Response res= new Response();
