@@ -42,6 +42,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Registrar([Bind]User Usuario)
     {
         var result= await _context.User.Where(x => x.FirstName == Usuario.FirstName).SingleOrDefaultAsync();
+        Usuario.RoleId=2;
         if (result != null)
         {
                 return BadRequest(new JObject() {
@@ -51,7 +52,7 @@ public class HomeController : Controller
         }
         else 
         {
-            Usuario.RoleId=2;
+            
             // if (!ModelState.IsValid)
             // {
             //     return BadRequest(ModelState.SelectMany(x=> x.Value.Errors.SelectMany(y=> y.ErrorMessage)).ToList());
@@ -68,7 +69,6 @@ public class HomeController : Controller
                         identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, resultado.Id.ToString()));
                         identity.AddClaim(new Claim(ClaimTypes.Email, resultado.Email));
                          identity.AddClaim(new Claim(ClaimTypes.Role, resultado.Role.Name));
-                        // identity.AddClaim(new Claim(ClaimTypes.Role, ));
                         // identity.AddClaim(new Claim(ClaimTypes.Email, "jose.jairo.fuentes@gmail.com"));
                         identity.AddClaim(new Claim("Dato", "Valor"));
                         var principal = new ClaimsPrincipal(identity);

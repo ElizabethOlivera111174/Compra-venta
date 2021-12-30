@@ -15,9 +15,11 @@ namespace PowerAutomate.Core
         [Key]
         public int IdCompra { get; set; }
         public int IdProveedor { get; set; }
+        
         [Required]
         [StringLength(15)]
         public string NumeroFactura { get; set; }
+
         [Column(TypeName = "datetime")]
         public DateTime Fecha { get; set; }
 

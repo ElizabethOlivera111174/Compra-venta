@@ -155,14 +155,14 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             IdCompra = 1,
-                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 741, DateTimeKind.Local).AddTicks(7306),
+                            Fecha = new DateTime(2021, 12, 26, 23, 45, 55, 80, DateTimeKind.Local).AddTicks(8280),
                             IdProveedor = 1,
                             NumeroFactura = "0001"
                         },
                         new
                         {
                             IdCompra = 2,
-                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 745, DateTimeKind.Local).AddTicks(8523),
+                            Fecha = new DateTime(2021, 12, 26, 23, 45, 55, 82, DateTimeKind.Local).AddTicks(7548),
                             IdProveedor = 2,
                             NumeroFactura = "0002"
                         });
@@ -471,14 +471,14 @@ namespace PowerAutomate.Migrations
                         new
                         {
                             IdVenta = 1,
-                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 747, DateTimeKind.Local).AddTicks(6476),
+                            Fecha = new DateTime(2021, 12, 26, 23, 45, 55, 83, DateTimeKind.Local).AddTicks(1966),
                             IdCliente = 1,
                             NumeroFactura = "001"
                         },
                         new
                         {
                             IdVenta = 2,
-                            Fecha = new DateTime(2021, 12, 25, 15, 59, 50, 747, DateTimeKind.Local).AddTicks(8022),
+                            Fecha = new DateTime(2021, 12, 26, 23, 45, 55, 83, DateTimeKind.Local).AddTicks(2271),
                             IdCliente = 2,
                             NumeroFactura = "002"
                         });

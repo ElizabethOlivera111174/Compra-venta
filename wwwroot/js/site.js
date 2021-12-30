@@ -42,6 +42,7 @@ $(document).on('submit', '#SetDetalle', function(e){
         }
     });
 })
+  
 
 $(document).on('submit', '#Registrar', function (e) {
     e.preventDefault();
@@ -89,3 +90,81 @@ $(document).on('submit', '#Login', function (e) {
         }
     });
 });
+
+    $(document).on('submit', '#Power', function (e) {
+        // e.preventDefault();
+        // let Producto= $('#Producto').val();
+        // let Descripcion= $('#Descripcion').val();
+        // let Cantidad= $('#Cantidad').val();
+        // let Precio= $('#Precio').val();
+        // let Total= $('#Total').val();
+        //         EnviarFormulario(Producto,Descripcion,Cantidad,Precio,Total);
+        // function EnviarFormulario(Producto, Descripcion,Cantidad, Precio, Total)
+        // {
+        //     comando= {
+        //         "Producto": Producto,
+        //         "Descripcion": Descripcion,
+        //         "Cantidad": Cantidad,
+        //         "Precio":Precio,
+        //         "Total": Total
+        //     }
+        // }
+
+        $.ajax({
+            beforeSend: function () {
+                $('#Power button[type=submit]').prop('disabled', true);
+            },
+            type: 'post',
+            url: 'https://prod-22.brazilsouth.logic.azure.com:443/workflows/786cbfa170464f0894ad71f42d1666c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=UIfwAcz48ENQHZDHu0Ws3O2wnU4VU9EnnIP0LBG9ClM',
+            dataType : 'json',
+            data: $("#Power").serialize(),
+            success: function (Response) {
+                alert(Response);
+                window.location='/Compras/Nuevo/1';
+            },
+            error: function (xhr, status) {
+                alert("Incorrecto");
+                
+            },
+            complete: function () {
+                $('#Power button[type=submit]').prop('disabled', false);
+            }
+        });
+    });
+
+    $(document).on('submit', '#Registrar', function (e) {
+        // e.preventDefault();
+        // let FirstName= $('#FirstName').val();
+        // let LastName= $('#LastName').val();
+        // let Email= $('#Email').val();
+        //         EnviarBienvenida(FirstName,LastName,Email);
+        // function EnviarBienvenida(FirstName,LastName,Email)
+        // {
+        //     comando= {
+        //         "FirstName": FirstName,
+        //         "LastName": LastName,
+        //         "Email": Email,
+        //     }
+        // }
+
+        $.ajax({
+            beforeSend: function () {
+                $('#Registrar button[type=submit]').prop('disabled', true);
+            },
+            type: 'post',
+            url: 'https://prod-16.brazilsouth.logic.azure.com:443/workflows/c5c9bbd0a99e45a19cb6f2cab7b34072/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ckZDnvOLsERUKBxIodmkf7vgjAD1RX0nNtfppIppzuw',
+            dataType : 'json',
+            data: $("#Registrar").serialize(),
+            success: function (data) {
+                alert(data.Response);
+                window.location='/Compras/Nuevo/1';
+            },
+            error: function (xhr, status) {
+                alert("Se envio correctamente");
+                window.location='/Compras/Nuevo/1';                
+            },
+            complete: function () {
+                $('#Registrar button[type=submit]').prop('disabled', false);
+            }
+        });
+    });

@@ -6,26 +6,29 @@
 <h1>Inicio de Sesion</h1>
 
 <div class="container">
-    <form asp-action="Login" asp-controller= "Login" id= "Login">
-        <div class="row py-2">
-            <div class="form-group col-md-3">
-                <label>Email</label>
-                <input type="email" asp-for="Email" class="form-control">
-                <span asp-validation-for="Email"></span>
-                
+    <div class="row">
+        <form asp-action="Login" asp-controller= "Login" id= "Login">
+            <div class="row py-2">
+                <div class="form-group col-md-3">
+                    <label>Email</label>
+                    <input type="email" asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email"></span>
+                    
+                </div>
             </div>
-        </div>
-        <div class="row py-2">
-            <div class="form-group col-md-3">
-                <label>Contraseña</label>
-                <input type="password" asp-for="Password" class="form-control"> 
-                <span asp-validation-for="Password"></span>
+            <div class="row py-2">
+                <div class="form-group col-md-3">
+                    <label>Contraseña</label>
+                    <input type="password" asp-for="Password" class="form-control"> 
+                    <span asp-validation-for="Password"></span>
+                </div>
             </div>
-        </div>
-        <div class="row py-2">
-            <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            <div class="row py-2">
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+                </div>
             </div>
-        </div>
-    </form> 
+        </form> 
+    </div>
+    
 </div>

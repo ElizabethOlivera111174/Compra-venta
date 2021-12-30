@@ -51,30 +51,39 @@
         </div>
     </form>
     <div class="row ty-2">
-        <table class="table table-condensed table-bordeared" id="tbl-detalle-compra">
-            <thead>
-             <tr>
-                <th>Producto</th>
-                <th>Descripcion</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Iva</th>
-                <th>Total</th>
-            </tr>
-            </thead>
-            <tbody>
-                 @foreach(DetalleCompra detalle in ViewBag.DetalleCompra)
-                {
-                    <tr>
-                    <td>@detalle.Producto.Marca - @detalle.Producto.Modelo</td>
-                    <td>@detalle.Producto.Descripcion</td>
-                    <td>@detalle.Cantidad</td>
-                    <td>@detalle.Precio.ToString("C")</td>
-                    <td>@detalle.Iva.ToString("C")</td>
-                    <td>@Convert.ToDouble(detalle.Total).ToString("C")</td>
-                    </tr>
-                }
-            </tbody>  
-        </table>
+        <form action="https://prod-22.brazilsouth.logic.azure.com:443/workflows/786cbfa170464f0894ad71f42d1666c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=UIfwAcz48ENQHZDHu0Ws3O2wnU4VU9EnnIP0LBG9ClM"  method="post" id="Power">
+        <input type= "hidden" asp-for="Item1.IdCompra">
+            <table class="table table-condensed table-bordeared" id="tbl-detalle-compra">
+                <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Iva</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach(DetalleCompra detalle in ViewBag.DetalleCompra)
+                    {
+                                
+                        <tr>
+                            <td><input type="text" class="form-control" value="@detalle.Producto.Marca - @detalle.Producto.Modelo" name="Producto" id="Producto"  readonly="readonly"></td>
+                            <td><input type="text" class="form-control" value="@detalle.Producto.Descripcion" name="Descripcion" id="Despcricion" readonly="readonly"></td>
+                            <td><input type="text" class="form-control" value="@detalle.Cantidad" name="Cantidad" id="Cantidad" readonly="readonly"></td>
+                            <td><input type="text" class="form-control" value="@detalle.Precio" name="Precio" id="Precio" readonly="readonly"></td>
+                            <td><input type="text" class="form-control" value=@detalle.Iva name="Iva" id="Iva" readonly="readonly"></td>
+                            <td><input type="text" class="form-control" value=@Convert.ToDouble(detalle.Total) name="Total" id="Total" readonly="readonly"></td>  
+                        </tr>
+                    }
+                      
+                        
+                </tbody>  
+            </table>
+            <div class="row py-2">
+                <button type="submit" class="btn btn-primary">Recibir Factura</button>
+            </div>
+        </form>
     </div>
 </div>

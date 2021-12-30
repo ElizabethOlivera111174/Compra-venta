@@ -9,7 +9,7 @@ namespace PowerAutomate.Controllers
     [Authorize(Roles="Administrator")]
     public class ClientesController: Controller
     {
-        ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<ClientesController> _logger;
 
         public ClientesController(ILogger<ClientesController> logger, ApplicationDbContext context)
@@ -17,7 +17,7 @@ namespace PowerAutomate.Controllers
             _logger = logger;
             _context = context;
         }
-
+        
         public IActionResult Index()
         {
             Clientes cliente = new Clientes();

@@ -9,21 +9,21 @@
         <div class="row py-2">
             <div class="form-group col-md-3">
                 <label>Nombre</label>
-                <input type="text" asp-for="FirstName" class="form-control">
+                <input type="text" asp-for="FirstName" class="form-control" name="FirstName" id="FirstName">
                 <span asp-validation-for="FirstName"></span>
             </div>
         </div>
         <div class="row py-2">
             <div class="form-group col-md-3">
                 <label>Apellido</label>
-                <input type="text" asp-for="LastName" class="form-control">
+                <input type="text" asp-for="LastName" class="form-control"  name="LastName" id="LastName">
                 <span asp-validation-for="LastName"></span>
             </div>
         </div>
         <div class="row py-2">
             <div class="form-group col-md-3">
                 <label>Email</label>
-                <input type="email" asp-for="Email" class="form-control">
+                <input type="email" asp-for="Email" class="form-control"  name="Email" id="Email">
                 <span asp-validation-for="Email"></span>
                 
             </div>
@@ -31,7 +31,7 @@
         <div class="row py-2">
             <div class="form-group col-md-3">
                 <label>Contraseña</label>
-                <input type="password" asp-for="Password" class="form-control"> 
+                <input type="password" asp-for="Password" class="form-control"  name="Password" id="Password"> 
                 <span asp-validation-for="Password"></span>
             </div>
         </div>
