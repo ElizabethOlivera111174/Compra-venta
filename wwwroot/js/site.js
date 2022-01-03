@@ -23,6 +23,11 @@ $(document).on('submit', '#SetDetalle', function(e){
                     data: $('#SetDetalle').serialize(),
                     success: function(data)
                     {
+                        Swal.fire(
+                            'Good job!',
+                            'El Producto se ha guardado correctamente!',
+                            'success'
+                          )
                         var tbl = $('#tbl-detalle-compra tbody');
                         var detalle = data.resultado;
                         tbl.append('<tr><td>'+detalle.producto.marca + ' - ' + detalle.producto.modelo+'</td>'+
@@ -37,12 +42,40 @@ $(document).on('submit', '#SetDetalle', function(e){
             }
             else
             {
-                alert(data.mensaje);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                  })
             }
         }
     });
 })
-  
+// $(document).on('submit', '#SetDetalle', function(e){
+//     $.ajax({
+//         beforeSend: function () {
+//             $('#SetDetalle button[type=submit]').prop('disabled', true);
+//         },
+//         type: 'post',
+//         url: 'https://prod-22.brazilsouth.logic.azure.com:443/workflows/786cbfa170464f0894ad71f42d1666c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=UIfwAcz48ENQHZDHu0Ws3O2wnU4VU9EnnIP0LBG9ClM',
+//         dataType : 'json',
+//         data:  $('#SetDetalle').serialize(),
+//         success: function (data) {
+//             alert(data.Response);
+//         },
+//         error: function (xhr, status) {
+//             Swal.fire(
+//                 'Good job!',
+//                 'Ha sido enviado Correctamente!',
+//                 'success'
+//             )           
+//         },
+//         complete: function () {
+//             $('#SetDetalle button[type=submit]').prop('disabled', false);
+//         }
+//     });
+// })
 
 $(document).on('submit', '#Registrar', function (e) {
     e.preventDefault();
@@ -58,8 +91,12 @@ $(document).on('submit', '#Registrar', function (e) {
             window.location='/Home/';
         },
         error: function (xhr, status) {
-            // alert(xhr.responseJSON.Message);
-            alert("El Usuario ya existe");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El Usuario o contraseña son incorrectas!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
         },
         complete: function () {
             $('#Registrar button[type=submit]').prop('disabled', false);
@@ -76,13 +113,30 @@ $(document).on('submit', '#Login', function (e) {
         url: this.action,
         data: $(this).serialize(),
         success: function (data) {
-            
-            alert('Bienvenido ' + data.email);
-            window.location='/Home/';
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+              })
+            window.location='/Home/'
         },
         error: function (xhr, status) {
-            alert(xhr.responseJSON.Message);
-            alert("Usuario o Contraseña Incorrecta");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Error Usuario o contraseña incorrecto!',
+            })
             
         },
         complete: function () {
@@ -92,25 +146,7 @@ $(document).on('submit', '#Login', function (e) {
 });
 
     $(document).on('submit', '#Power', function (e) {
-        // e.preventDefault();
-        // let Producto= $('#Producto').val();
-        // let Descripcion= $('#Descripcion').val();
-        // let Cantidad= $('#Cantidad').val();
-        // let Precio= $('#Precio').val();
-        // let Total= $('#Total').val();
-        //         EnviarFormulario(Producto,Descripcion,Cantidad,Precio,Total);
-        // function EnviarFormulario(Producto, Descripcion,Cantidad, Precio, Total)
-        // {
-        //     comando= {
-        //         "Producto": Producto,
-        //         "Descripcion": Descripcion,
-        //         "Cantidad": Cantidad,
-        //         "Precio":Precio,
-        //         "Total": Total
-        //     }
-        // }
-
-        $.ajax({
+         $.ajax({
             beforeSend: function () {
                 $('#Power button[type=submit]').prop('disabled', true);
             },
@@ -118,12 +154,24 @@ $(document).on('submit', '#Login', function (e) {
             url: 'https://prod-22.brazilsouth.logic.azure.com:443/workflows/786cbfa170464f0894ad71f42d1666c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=UIfwAcz48ENQHZDHu0Ws3O2wnU4VU9EnnIP0LBG9ClM',
             dataType : 'json',
             data: $("#Power").serialize(),
-            success: function (Response) {
-                alert(Response);
-                window.location='/Compras/Nuevo/1';
+            success: function (data) {
+                Swal.fire(
+                    'Good job!',
+                    'Ha sido enviado Correctamente!',
+                    'success',
+                    
+                  )
+                  console.log(data);
+                // window.location='/Compras/Nuevo/1';
             },
             error: function (xhr, status) {
-                alert("Incorrecto");
+                e.preventDefault();
+                Swal.fire(
+                    'Good job!',
+                    'Ha sido enviado Correctamente!',
+                    'success'
+                  )
+                //   window.location='/Compras/Nuevo/1';   
                 
             },
             complete: function () {
@@ -157,11 +205,11 @@ $(document).on('submit', '#Login', function (e) {
             data: $("#Registrar").serialize(),
             success: function (data) {
                 alert(data.Response);
-                window.location='/Compras/Nuevo/1';
+                // window.location='/Compras/Nuevo/1';
             },
             error: function (xhr, status) {
                 alert("Se envio correctamente");
-                window.location='/Compras/Nuevo/1';                
+                // window.location='/Compras/Nuevo/1';                
             },
             complete: function () {
                 $('#Registrar button[type=submit]').prop('disabled', false);

@@ -1,13 +1,19 @@
 ﻿@using PowerAutomate.Core.Helpers
-<!DOCTYPE html>
+<!DOCTYPE html
+ PUBLIC "-//W3C//DTD HTML 4.01//EN"
+      "http://www.w3.org/TR/html4/strict.dtd"
+>
 <html lang="en">
-<head>
+    
+<head profile="http://www.w3.org/2005/10/profile">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DataNet</title>
+    <link rel="icon" type="image/png"  href="https://www.google.com/imgres?imgurl=https%3A%2F%2Flh3.googleusercontent.com%2FCClor8cyseaLQutktgfbgfJsbHmJhnuv3735yT7fJIDSdu8pcB25BefTmwAdgUVgdOk&imgrefurl=https%3A%2F%2Fwww.99images.com%2Fapps%2Fnews-magazines%2Fpt.civ.dn&tbnid=Sg7LDl5RJAf6VM&vet=10CAcQxiAoBmoXChMI-PX_3e6L9QIVAAAAAB0AAAAAEC0..i&docid=_bNnHUjF9XsmEM&w=512&h=512&itg=1&q=DN&ved=0CAcQxiAoBmoXChMI-PX_3e6L9QIVAAAAAB0AAAAAEC0">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PowerAutomate.styles.css" asp-append-version="true" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <header>
@@ -21,14 +27,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        </li> *@
                          @if(User.Identity.IsAuthenticated){
                              <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Cerrar Sesion</a>
                             </li>
                               <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">Productos</a>
@@ -43,7 +49,7 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Acceder</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Registro">Registro</a>
@@ -56,6 +62,9 @@
         </nav>
     </header>
      <div class="container">
+         <div class="text-center py-2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM0LAPSksNC6--aTbc_ksK2RzTkj09VL0oztZxBy5BzM4WDuVKBzDQ0tDG7B-1TP0KeA&usqp=CAU" class="img-fluid" alt="Responsive image">
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -63,14 +72,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <div class="alert alert-info">
-
             Usuario  Autenticado
-            <ul>
-                <li>@SessionHelper.GetNameIdentifier(User)</li>
-                @* <li>@SessionHelper.GetName(User)</li> *@
-                <li>@SessionHelper.GetEmail(User)</li>
-                <li>@SessionHelper.GetValue(User, "Dato")</li>
-            </ul>
         </div>
     }
     else
@@ -82,14 +84,17 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - PowerAutomate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - DataNet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

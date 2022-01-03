@@ -20,7 +20,7 @@ namespace PowerAutomate.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly ApplicationDbContext _context;
+    ApplicationDbContext _context;
 
      public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
     {
@@ -28,9 +28,13 @@ public class HomeController : Controller
         _context = context;
     }
     [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        List<Productos> Productos = await _context.Productos.Include(x=>x.Categoria).ToListAsync();
+        Productos Producto = new Productos();
+        ViewBag.Productos = Productos;
+        ViewBag.Categorias = await _context.Categorias.ToListAsync();
+        return View(Producto);
     }
      [HttpGet]
     public async Task<IActionResult> Registro()
@@ -68,8 +72,7 @@ public class HomeController : Controller
                  var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Email, ClaimTypes.Role);
                         identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, resultado.Id.ToString()));
                         identity.AddClaim(new Claim(ClaimTypes.Email, resultado.Email));
-                         identity.AddClaim(new Claim(ClaimTypes.Role, resultado.Role.Name));
-                        // identity.AddClaim(new Claim(ClaimTypes.Email, "jose.jairo.fuentes@gmail.com"));
+                        identity.AddClaim(new Claim(ClaimTypes.Role, resultado.Role.Name));
                         identity.AddClaim(new Claim("Dato", "Valor"));
                         var principal = new ClaimsPrincipal(identity);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,

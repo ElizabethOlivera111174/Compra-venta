@@ -1,8 +1,38 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model PowerAutomate.Core.Productos
 
 <div class="text-center">
     <h1 class="display-4">Bienvenidos</h1>
     <p>Sitio en Construccion</p>
 </div>
+    @* <div className="col-md-12">
+        
+        <div class="card-body bg-dark">
+                    <div class="row">
+                       <h1 class="text-center text-light">Portafolio</h1>
+                    </div>
+                @foreach (Productos Producto in ViewBag.Productos)
+                {
+                     <div class="col-md-4  py-2">
+                             <div class="card h-100">
+                                <div class="overflow">
+                                    <img src={imagen} alt="" class="card-img-top"/>
+                                </div>
+                                        
+                                <div class="card-body">
+                                    <h1>@Producto.Nombre</h1> 
+                                    <p>@Producto.Descripcion</p>
+                                    <p>@Producto.Marca</p>
+                                    <a href={repositorio} target="_blank" >Repositorio de git hub</a>
+                                </div>
+                            </div>
+                    </div>                
+                }
+        </div>
+                   
+    </div> *@
+
+    <partial name="~/Views/Home/Productos.cshtml"></partial>
+

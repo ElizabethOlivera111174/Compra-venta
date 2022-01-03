@@ -87,6 +87,8 @@ public class ComprasController: Controller
             _context.DetalleCompra.Add(Detalle);
             await _context.SaveChangesAsync();
             Detalle.Producto= await _context.Productos.FindAsync(Detalle.IdProducto);
+            Detalle.Producto.Precio= Detalle.Precio * Convert.ToDecimal(1.50);
+            Detalle.Producto.Stock= Detalle.Producto.Stock + Detalle.Cantidad;
             res.resultado= Detalle;
             res.mensaje= "El producto ha sido agregado";
             res.estado = true;

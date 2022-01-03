@@ -27,8 +27,15 @@ namespace PowerAutomate.Core
         [Required]
         [StringLength(50)]
         public string Modelo { get; set; }
-        
+        [Required]
+        [Column(TypeName = "money")]
+        public decimal Precio { get; set; }
+        [Required]
+        public int Stock { get; set; }
         public int IdCategoria { get; set; }
+
+        // [Required]
+        // public string Img { get; set; }
 
         [ForeignKey("IdCategoria")]
         [InverseProperty("Productos")]
